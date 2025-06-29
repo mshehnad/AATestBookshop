@@ -1,0 +1,8 @@
+rules:
+  - id: insecure-sql-injection
+    patterns:
+      - pattern: |
+          $SQL_VAR = "SELECT ... WHERE ... = '$USER_INPUT'";
+    message: "Potential SQL Injection: avoid embedding user input directly into SQL statements."
+    languages: [php]
+    severity: ERROR
