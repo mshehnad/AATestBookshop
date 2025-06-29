@@ -1,9 +1,7 @@
 rules:
   - id: insecure-sql-injection
     patterns:
-      - pattern: |
-          $VAR = "...'$USER_INPUT'...";
-    message: "Potential SQL Injection: user input is directly concatenated into a SQL string."
+      - pattern: $SQL = "SELECT * FROM $TABLE WHERE $FIELD = '$USER_INPUT'";
+    message: "Potential SQL Injection: User input is directly used in SQL queries."
     languages: [php]
     severity: ERROR
-
